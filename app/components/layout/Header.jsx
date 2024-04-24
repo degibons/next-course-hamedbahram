@@ -1,6 +1,6 @@
-import Link from "next/link";
-import NavLink from "@/components/ui/NavLink";
-import ContactButton from "@/components/ui/ContactButton";
+import Link from 'next/link'
+import NavLink from '@/components/ui/NavLink'
+import ContactButton from '@/components/ui/ContactButton'
 
 const Header = () => {
   return (
@@ -13,6 +13,11 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink href="/posts" className="text-blue-600">
+              Posts
+            </NavLink>
+          </li>
+          <li>
             <NavLink href="/about" className="text-blue-600">
               About
             </NavLink>
@@ -21,6 +26,6 @@ const Header = () => {
         </ul>
       </nav>
     </header>
-  );
-};
-export default Header;
+  )
+}
+export default Header

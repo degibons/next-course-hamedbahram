@@ -1,0 +1,63 @@
+---
+title: Learn NextJs
+author: Degibons
+---
+
+# This is a markdown file
+
+<NewsLetter />
+
+Here is a list of items:
+
+- Item one
+- Item two
+- Item three
+
+MDX markdown:
+
+```mdx
+<NewsLetter />
+
+Here is a list of items:
+
+- Item one
+- Item two
+- Item three
+```
+
+Utility to get and parse mdx:
+
+```jsx
+import path from 'path'
+import fs from 'fs'
+import { compileMDX } from 'next-mdx-remote/rsc'
+import NewsLetter from '@/app/components/NewsLetter'
+
+const rootDirectory = path.join(process.cwd(), 'content')
+
+// custom components
+const components = {
+  h1: props => (
+    <h2 {...props} className="text-emerald-400">
+      {props.children}
+    </h2>
+  ),
+  NewsLetter
+}
+
+export async function getPostBySlog(slug) {
+  const realSlug = slug.replace(/\.mdx$/, '')
+  const filePath = path.join(rootDirectory, `${realSlug}.mdx`)
+  const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' })
+
+  const { content, frontmatter } = await compileMDX({
+    source: fileContent,
+    components,
+    options: {
+      parseFrontmatter: true
+    }
+  })
+
+  return { content, frontmatter }
+}
+```
