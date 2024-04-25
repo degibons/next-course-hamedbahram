@@ -1,21 +1,8 @@
 import ContactButton from '@/components/ui/ContactButton'
-
-async function getData() {
-  return new Promise((resolve, reject) =>
-    setTimeout(() => {
-      const random = Math.random()
-      if (random > 0.3) {
-        reject('Failed to get data')
-      }
-
-      resolve()
-    }, 1000)
-  )
-}
+import { wait } from '@/lib/posts'
 
 const page = async () => {
-  await getData()
-
+  await wait(1000)
   return (
     <>
       <h1>About</h1>

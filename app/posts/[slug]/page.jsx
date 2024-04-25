@@ -8,12 +8,29 @@ import { Suspense } from 'react'
 //   return posts.map(post => ({ slug: post.slug }))
 // }
 
+async function getData() {
+  return new Promise((resolve, reject) =>
+    setTimeout(() => {
+      const random = Math.random()
+      if (random > 0.5) {
+        reject('Failed to get data')
+      }
+
+      resolve()
+    }, 500)
+  )
+}
+
 const Page = async ({ params }) => {
   const { slug } = params
 
   const { content, frontmatter } = await getPostBySlug(slug)
 
-  await wait(500)
+  try {
+    await getData()
+  } catch (error) {
+    throw new Error(error)
+  }
 
   return (
     <section>
