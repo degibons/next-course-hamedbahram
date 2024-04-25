@@ -12,7 +12,7 @@ const Header = () => {
           </li>
           <li>
             <NavLink href="/posts" className="text-blue-600">
-              Posts
+              Blog
             </NavLink>
           </li>
           <li>

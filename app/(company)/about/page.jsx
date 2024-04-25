@@ -1,6 +1,8 @@
 import ContactButton from '@/components/ui/ContactButton'
+import { wait } from '@/lib/posts'
 
-const page = () => {
+const page = async () => {
+  await wait(1000)
   return (
     <>
       <h1>About</h1>
