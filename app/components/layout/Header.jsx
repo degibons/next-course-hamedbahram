@@ -1,6 +1,4 @@
-import Link from 'next/link'
 import NavLink from '@/components/ui/NavLink'
-import ContactButton from '@/components/ui/ContactButton'
 
 const Header = () => {
   return (
@@ -22,7 +20,6 @@ const Header = () => {
               About
             </NavLink>
           </li>
-          <ContactButton />
         </ul>
       </nav>
     </header>
