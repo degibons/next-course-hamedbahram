@@ -1,9 +1,10 @@
 import NavLink from '@/components/ui/NavLink'
+import ThemeButton from '@/components/ui/ThemeButton'
 
 const Header = () => {
   return (
-    <header className="bg-slate-100 py-4">
-      <nav className="container">
+    <header className="flex min-h-16 items-center bg-slate-100 dark:border-b dark:border-b-gray-600 dark:bg-black">
+      <nav className="container flex items-center justify-between">
         <ul className="flex gap-4">
           <li>
             <NavLink href="/" className="text-blue-600">
@@ -21,6 +22,8 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
+
+        <ThemeButton />
       </nav>
     </header>
   )
