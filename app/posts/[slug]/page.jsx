@@ -26,11 +26,11 @@ const Page = async ({ params }) => {
 
   const { content, frontmatter } = await getPostBySlug(slug)
 
-  try {
-    await getData()
-  } catch (error) {
-    throw new Error(error)
-  }
+  // try {
+  //   await getData()
+  // } catch (error) {
+  //   throw new Error(error)
+  // }
 
   return (
     <section>

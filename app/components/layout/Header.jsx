@@ -21,6 +21,11 @@ const Header = () => {
               About
             </NavLink>
           </li>
+          <li>
+            <NavLink href="/guestbook" className="text-blue-600">
+              Guestbook
+            </NavLink>
+          </li>
         </ul>
 
         <ThemeButton />

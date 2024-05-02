@@ -2,6 +2,8 @@ import RefreshButton from '@/app/components/ui/RefreshButton'
 import ContactButton from '@/components/ui/ContactButton'
 import { wait } from '@/lib/posts'
 
+export const dynamic = 'force-dynamic'
+
 const page = async () => {
   await wait(1000)
   return (

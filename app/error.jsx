@@ -4,12 +4,12 @@ import { useEffect } from 'react'
 
 const Error = ({ error, reset }) => {
   useEffect(() => {
-    console.log('Error log:', error)
+    console.log(error)
   }, [error])
 
   return (
     <div>
-      <h2 className="text-xl text-red-400">Something went wrong!</h2>
+      <h2 className="text-xl text-red-400">{error.message}</h2>
       <div className="text-gray-400">app level</div>
       <div className="mt-6">
         <button
