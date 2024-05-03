@@ -2,6 +2,7 @@ import { getGuestbookEntries } from '@/lib/guestbook'
 import GuestbookEntryForm from '@/components/ui/GuestbookEntryForm'
 
 export const dynamic = 'force-dynamic'
+// export const revalidate = 60
 
 async function getData() {
   const { entries, error } = await getGuestbookEntries()
