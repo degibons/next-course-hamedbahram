@@ -1,4 +1,5 @@
 import PageViews from '@/app/components/PageViews'
+import BlogImage from '@/app/components/ui/BlogImage'
 import { getAllPosts, getPostBySlug, wait } from '@/lib/posts'
 import { Suspense } from 'react'
 
@@ -25,6 +26,7 @@ const Page = async ({ params }) => {
   const { slug } = params
 
   const { content, frontmatter } = await getPostBySlug(slug)
+  const imageFile = 'girl.jpg'
 
   // try {
   //   await getData()
@@ -34,6 +36,7 @@ const Page = async ({ params }) => {
 
   return (
     <section>
+      <BlogImage file={imageFile} />
       <header className="rounded bg-slate-100 p-8">
         <h1 className="font-serif text-3xl">{frontmatter.title}</h1>
         <p className="mt-1 text-sm font-light uppercase text-slate-400">
