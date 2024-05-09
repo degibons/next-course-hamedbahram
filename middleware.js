@@ -1,30 +1,19 @@
-import { NextResponse } from 'next/server'
+import { chain } from './middleware/chain'
+import { withMiddleware1 } from './middleware/middleware1'
+import { withMiddleware2 } from './middleware/middleware2'
 
-export function middleware(request) {
-  // parsed nextUrl object
-  const { pathname, searchParams } = request.nextUrl
-  console.log({ pathname, sort: searchParams.get('sort') })
-  // return NextResponse.next()
-
-  // redirecting
-  // return NextResponse.rewrite(new URL('/team', request.url))
-
-  // reading request cookies
-  // const allCookies = request.cookies.getAll()
-
-  // setting response cookies
-  // const response = NextResponse.next()
-  // response.cookies.set({
-  //   name: 'next',
-  //   value: 'fast',
-  //   path: '/'
-  // })
-  // return response
-
-  // responding with json
-  return NextResponse.json({ message: `Hello from middleware` })
-}
+const middlewares = [withMiddleware1, withMiddleware2]
+export default chain(middlewares)
 
 export const config = {
-  matcher: '/api/test'
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    '/((?!api|_next/static|_next/image|favicon.ico).*)'
+  ]
 }
