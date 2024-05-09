@@ -15,6 +15,11 @@ module.exports = {
         md: '1.5rem',
         lg: '2rem'
       }
+    },
+    extend: {
+      fontFamily: {
+        serif: ['var(--font-roboto-serif)']
+      }
     }
   },
   plugins: [require('@tailwindcss/typography')]

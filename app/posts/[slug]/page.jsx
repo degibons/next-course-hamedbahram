@@ -38,12 +38,14 @@ const Page = async ({ params }) => {
     <section>
       <BlogImage file={imageFile} />
       <header className="rounded bg-slate-100 p-8">
-        <h1 className="font-serif text-3xl">{frontmatter.title}</h1>
+        <h1 className="font-serif text-3xl font-bold">{frontmatter.title}</h1>
         <p className="mt-1 text-sm font-light uppercase text-slate-400">
           {frontmatter.author}
         </p>
-        <div className="mt-4 text-xs text-gray-400">
-          <Suspense fallback="Loading view count...">
+        <div className="mt-4">
+          <Suspense
+            fallback={<div className="text-xs text-slate-400">Loading...</div>}
+          >
             <PageViews slug={slug} />
           </Suspense>
         </div>

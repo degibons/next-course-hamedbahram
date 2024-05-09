@@ -3,6 +3,13 @@ import { wait } from '@/lib/posts'
 const PageViews = async ({ slug }) => {
   await wait(2000)
 
-  return <span>views: 123</span>
+  return (
+    <div
+      className="inline-block rounded-xl bg-sky-600
+     px-3 py-1 text-xs text-white"
+    >
+      views: 123
+    </div>
+  )
 }
 export default PageViews
