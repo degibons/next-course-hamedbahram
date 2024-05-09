@@ -3,11 +3,20 @@ import BlogImage from '@/app/components/ui/BlogImage'
 import { getAllPosts, getPostBySlug, wait } from '@/lib/posts'
 import { Suspense } from 'react'
 
-// export async function generateStaticParams() {
-//   const posts = await getAllPosts()
+export async function generateMetadata({ params, searchParams }, parent) {
+  const { slug } = params
+  const { content, frontmatter } = await getPostBySlug(slug)
 
-//   return posts.map(post => ({ slug: post.slug }))
-// }
+  return {
+    title: `${frontmatter.title} by ${frontmatter.author}`
+  }
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts()
+
+  return posts.map(post => ({ slug: post.slug }))
+}
 
 async function getData() {
   return new Promise((resolve, reject) =>
