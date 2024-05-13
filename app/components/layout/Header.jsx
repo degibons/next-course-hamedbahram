@@ -26,6 +26,11 @@ const Header = () => {
               Guestbook
             </NavLink>
           </li>
+          <li>
+            <NavLink href="/photos" className="text-blue-600">
+              Photos
+            </NavLink>
+          </li>
         </ul>
 
         <ThemeButton />
