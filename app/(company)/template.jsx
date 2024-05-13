@@ -5,9 +5,9 @@ import NavLink from '@/components/ui/NavLink'
 
 const CompanyLayout = ({ children }) => {
   return (
-    <section className="py-24">
+    <section className="pt-6">
       <div className="container flex">
-        <div className="overflow-y-auto border-r border-gray-200 py-6 pr-12">
+        <div className="overflow-y-auto border-r border-gray-200 pr-6">
           <nav className="flex flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-4">
               <motion.li
@@ -42,7 +42,7 @@ const CompanyLayout = ({ children }) => {
           </nav>
         </div>
 
-        <main className="ml-12 grow bg-gray-50 p-6">{children}</main>
+        <main className="ml-6 grow">{children}</main>
       </div>
     </section>
   )
