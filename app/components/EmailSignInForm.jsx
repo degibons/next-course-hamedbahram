@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { EmailLoginFormData } from '@/lib/schema'
+import LoadingDots from '@/components/ui/loading-dots'
 
 const EmailSignInForm = ({ callbackUrl }) => {
   const [validationError, setValidationError] = useState(null)
+  const [pending, setPending] = useState(false)
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -26,7 +28,10 @@ const EmailSignInForm = ({ callbackUrl }) => {
     }
 
     // Send sign in email
-    signIn('email', { email, callbackUrl })
+    setPending(true)
+    signIn('email', { email, callbackUrl }).then(() => {
+      setPending(false)
+    })
   }
 
   return (
@@ -51,9 +56,10 @@ const EmailSignInForm = ({ callbackUrl }) => {
       </div>
       <button
         type="submit"
-        className="mt-3 inline-flex w-full justify-center rounded-lg border border-gray-400 px-3 py-2"
+        disabled={pending}
+        className="mt-3 w-full rounded-lg border border-gray-400 px-3 py-2 disabled:cursor-wait"
       >
-        Создать аккаунт
+        {pending ? <LoadingDots color="#808080" /> : 'Войти'}
       </button>
     </form>
   )
