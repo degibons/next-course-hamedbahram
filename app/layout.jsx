@@ -3,7 +3,7 @@ import { Roboto_Serif } from 'next/font/google'
 import './globals.css'
 import Header from '@/app/components/layout/Header'
 import Footer from '@/app/components/layout/Footer'
-import { ThemeProvider } from 'next-themes'
+import Providers from './providers'
 
 const robotoFlex = Roboto_Flex({
   subsets: ['cyrillic']
@@ -23,11 +23,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${robotoFlex.className} ${robotoSerif.variable}`}>
-        <ThemeProvider attribute="class">
+        <Providers>
           <Header />
           <main className="container py-6">{children}</main>
           <Footer />
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )

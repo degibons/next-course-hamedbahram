@@ -38,6 +38,13 @@ const CompanyLayout = ({ children }) => {
               >
                 <NavLink href="/join">Join</NavLink>
               </motion.li>
+              <li className="mt-4 text-gray-400 ">Protected:</li>
+              <li>
+                <NavLink href="/protected/client">Client</NavLink>
+              </li>
+              <li>
+                <NavLink href="/protected/server">Server</NavLink>
+              </li>
             </ul>
           </nav>
         </div>

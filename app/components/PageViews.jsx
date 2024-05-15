@@ -1,4 +1,4 @@
-import { wait } from '@/lib/posts'
+import wait from '@/lib/wait'
 
 const PageViews = async ({ slug }) => {
   await wait(2000)

@@ -2,6 +2,8 @@
 
 import { addEntry } from '@/app/_actions'
 import { useRef, useState } from 'react'
+import { useFormStatus } from 'react-dom'
+import LoadingDots from '@/components/ui/loading-dots'
 
 const GuestbookEntryForm = () => {
   const [validationError, setValidationError] = useState(null)
@@ -9,7 +11,6 @@ const GuestbookEntryForm = () => {
 
   async function action(data) {
     const result = await addEntry(data)
-
     setValidationError(result?.error ?? null)
     !result?.error && formRef.current.reset()
   }
@@ -24,7 +25,7 @@ const GuestbookEntryForm = () => {
         type="text"
         name="name"
         placeholder="Your name"
-        className="rounded border bg-transparent px-3 py-1 dark:border-gray-600"
+        className="rounded-lg border border-gray-300 px-5 py-2.5 dark:border-gray-600"
       />
       {validationError?.name && (
         <p className="text-sm text-red-500">
@@ -35,21 +36,30 @@ const GuestbookEntryForm = () => {
         type="text"
         name="message"
         placeholder="Your message..."
-        className="rounded border bg-transparent px-3 py-1 dark:border-gray-600"
+        className="rounded-lg border border-gray-300 px-5 py-2.5 dark:border-gray-600"
       />
       {validationError?.message && (
         <p className="text-sm text-red-500">
           {validationError.message._errors.join(', ')}
         </p>
       )}
-      <button
-        type="submit"
-        // disabled={isMutating}
-        className="rounded bg-black px-3 py-1 text-white disabled:opacity-50 dark:bg-white dark:text-black"
-      >
-        Add
-      </button>
+
+      <SubmitButton />
     </form>
+  )
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      class="rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100 disabled:cursor-wait disabled:bg-transparent dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:disabled:bg-transparent"
+    >
+      {pending ? <LoadingDots color="#808080" /> : 'Добавить'}
+    </button>
   )
 }
 
