@@ -29,4 +29,9 @@ export const authOptions = {
     signIn: '/signin',
     verifyRequest: '/verify'
   }
+  // events: {
+  //   async session(data) {
+  //     console.log('session', data)
+  //   }
+  // }
 }
