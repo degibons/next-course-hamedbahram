@@ -1,16 +1,17 @@
+import NextAuth from 'next-auth'
 import Google from 'next-auth/providers/google'
-import Email from 'next-auth/providers/email'
+import Nodemailer from 'next-auth/providers/nodemailer'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import prisma from '@/lib/prisma'
-import sendVerificationRequest from './sendVerificationRequest'
+import sendVerificationRequest from '@/lib/sendVerificationRequest'
 
-export const authOptions = {
+export const { auth, handlers, signIn, signOut } = NextAuth({
   providers: [
     Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
     }),
-    Email({
+    Nodemailer({
       // server: process.env.EMAIL_SERVER,
       server: {
         host: process.env.EMAIL_SERVER_HOST,
@@ -29,9 +30,4 @@ export const authOptions = {
     signIn: '/signin',
     verifyRequest: '/verify'
   }
-  // events: {
-  //   async session(data) {
-  //     console.log('session', data)
-  //   }
-  // }
-}
+})

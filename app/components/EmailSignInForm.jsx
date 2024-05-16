@@ -29,7 +29,7 @@ const EmailSignInForm = ({ callbackUrl }) => {
 
     // Send sign in email
     setPending(true)
-    signIn('email', { email, callbackUrl }).then(() => {
+    signIn('nodemailer', { email, callbackUrl }).then(() => {
       setPending(false)
     })
   }

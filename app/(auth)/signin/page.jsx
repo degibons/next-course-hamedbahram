@@ -1,7 +1,6 @@
 import EmailSignInForm from '@/app/components/EmailSignInForm'
 import GoogleSignInButton from '@/app/components/GoogleSignInButton'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '@/app/api/auth/_options'
+import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 
 const authErrorMessages = {
@@ -28,7 +27,7 @@ const getAuthErrorMessage = error => {
 }
 
 const SignInPage = async ({ searchParams }) => {
-  const session = await getServerSession(authOptions)
+  const session = await auth()
 
   if (session) {
     redirect('/')
