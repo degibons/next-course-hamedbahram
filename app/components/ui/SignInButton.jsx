@@ -1,26 +1,14 @@
-'use client'
+import { getServerSession } from 'next-auth/next'
+import { authOptions } from '@/app/api/auth/_options'
 
-import { signIn, signOut, useSession } from 'next-auth/react'
-
-const buttonClasses =
-  'rounded border px-2 py-1 text-sm text-gray-500 border-gray-500'
-
-const SignInButton = () => {
-  const { data: session } = useSession()
+const SignIn = async () => {
+  const session = await getServerSession(authOptions)
 
   return (
-    <>
-      {session ? (
-        <button className={buttonClasses} onClick={() => signOut()}>
-          Sign Out
-        </button>
-      ) : (
-        <button className={buttonClasses} onClick={() => signIn()}>
-          Sign In
-        </button>
-      )}
-    </>
+    <button className="rounded border border-gray-500 px-2 py-1 text-sm text-gray-500">
+      {session ? 'Sign Out' : 'Sign In'}
+    </button>
   )
 }
 
-export default SignInButton
+export default SignIn

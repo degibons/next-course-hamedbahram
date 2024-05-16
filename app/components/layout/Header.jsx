@@ -1,6 +1,7 @@
 import NavLink from '@/components/ui/NavLink'
 import ThemeButton from '@/components/ui/ThemeButton'
-import SignInButton from '@/components/ui/SignInButton'
+import SignIn from '@/app/components/ui/SignIn'
+import SignInButton from '@/app/components/ui/SignInButton'
 
 const Header = () => {
   return (
@@ -36,7 +37,9 @@ const Header = () => {
 
         <div className="flex items-center gap-4">
           <ThemeButton />
-          <SignInButton />
+          <SignIn>
+            <SignInButton />
+          </SignIn>
         </div>
       </nav>
     </header>
