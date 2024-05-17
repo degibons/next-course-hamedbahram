@@ -13,13 +13,9 @@ import {
   Text
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : ''
+const baseUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : ''
 
 export const MagicLinkEmail = ({ url, host }) => {
-  const escapedHost = host.replace(/\./g, '&#8203;.')
-
   return (
     <Html>
       <Head />
@@ -34,7 +30,7 @@ export const MagicLinkEmail = ({ url, host }) => {
               alt="Лого"
             />
           </Section>
-          <Heading style={h1}>Регистрация на {escapedHost}</Heading>
+          <Heading style={h1}>Регистрация на {host}</Heading>
           <Text style={heroText}>
             Перейдите по указанной ниже ссылке для завершения регистрации
           </Text>
@@ -79,7 +75,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                     <Column>
                       <Link href="/">
                         <Img
-                          src={`${baseUrl}/static/instagram.png`}
+                          src={`${baseUrl}/images/instagram.png`}
                           width="32"
                           height="32"
                           alt="Instagram"
@@ -90,7 +86,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                     <Column>
                       <Link href="/">
                         <Img
-                          src={`${baseUrl}/static/twitter.png`}
+                          src={`${baseUrl}/images/twitter.png`}
                           width="32"
                           height="32"
                           alt="Twitter"
@@ -101,7 +97,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                     <Column>
                       <Link href="/">
                         <Img
-                          src={`${baseUrl}/static/whatsapp.png`}
+                          src={`${baseUrl}/images/whatsapp.png`}
                           width="32"
                           height="32"
                           alt="Whatsapp"
