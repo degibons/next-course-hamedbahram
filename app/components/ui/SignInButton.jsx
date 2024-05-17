@@ -105,7 +105,7 @@ const SignInButton = () => {
             </MenuItems>
           </Transition>
         </Menu>
-      ) : (
+      ) : session === undefined ? null : (
         <button
           className="rounded-md border border-stone-300 px-3 py-1 text-sm dark:border-stone-600"
           onClick={() => signIn()}
