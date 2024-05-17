@@ -26,7 +26,7 @@ export const MagicLinkEmail = ({ url, host }) => {
             <Img
               src={`${baseUrl}/images/logo.png`}
               width="120"
-              height="36"
+              height="120"
               alt="Лого"
             />
           </Section>
@@ -53,8 +53,8 @@ export const MagicLinkEmail = ({ url, host }) => {
               <Column style={{ width: '66%' }}>
                 <Img
                   src={`${baseUrl}/images/logo.png`}
-                  width="120"
-                  height="36"
+                  width="100"
+                  height="100"
                   alt="Лого"
                 />
               </Column>
