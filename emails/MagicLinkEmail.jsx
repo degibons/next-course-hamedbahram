@@ -31,28 +31,25 @@ export const MagicLinkEmail = ({ url, host }) => {
               src={`${baseUrl}/images/logo.png`}
               width="120"
               height="36"
-              alt="Slack"
+              alt="Лого"
             />
           </Section>
-          <Heading style={h1}>
-            Регистрация на <strong>${escapedHost}</strong>
-          </Heading>
+          <Heading style={h1}>Регистрация на {escapedHost}</Heading>
           <Text style={heroText}>
-            Your confirmation code is below - enter it in your open browser
-            window and well help you get signed in.
+            Перейдите по указанной ниже ссылке для завершения регистрации
           </Text>
 
           <Section style={codeBox}>
             <Text style={confirmationCodeText}>
               <a href={url} target="_blank">
-                Авторизоваться
+                Перейти на сайт
               </a>
             </Text>
           </Section>
 
           <Text style={text}>
-            If you didnt request this email, theres nothing to worry about, you
-            can safely ignore it.
+            Если вы получили данное сообщение по ошибке, просто проигнорируйте
+            его
           </Text>
 
           <Section>
@@ -62,7 +59,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                   src={`${baseUrl}/images/logo.png`}
                   width="120"
                   height="36"
-                  alt="Slack"
+                  alt="Лого"
                 />
               </Column>
               <Column>
@@ -74,7 +71,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                           src={`${baseUrl}/images/facebook.png`}
                           width="32"
                           height="32"
-                          alt="Vk"
+                          alt="Facebook"
                           style={socialMediaIcon}
                         />
                       </Link>
@@ -85,7 +82,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                           src={`${baseUrl}/static/instagram.png`}
                           width="32"
                           height="32"
-                          alt="Telegram"
+                          alt="Instagram"
                           style={socialMediaIcon}
                         />
                       </Link>
@@ -96,7 +93,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                           src={`${baseUrl}/static/twitter.png`}
                           width="32"
                           height="32"
-                          alt="Slack"
+                          alt="Twitter"
                           style={socialMediaIcon}
                         />
                       </Link>
@@ -107,7 +104,7 @@ export const MagicLinkEmail = ({ url, host }) => {
                           src={`${baseUrl}/static/whatsapp.png`}
                           width="32"
                           height="32"
-                          alt="Slack"
+                          alt="Whatsapp"
                           style={socialMediaIcon}
                         />
                       </Link>
