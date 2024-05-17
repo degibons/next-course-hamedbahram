@@ -13,9 +13,9 @@ import {
   Text
 } from '@react-email/components'
 
-const baseUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : ''
-
 export const MagicLinkEmail = ({ url, host }) => {
+  const baseUrl = `https://${host}`
+
   return (
     <Html>
       <Head />
