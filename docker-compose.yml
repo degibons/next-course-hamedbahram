@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  postgres-db:
+    image: postgres:14.8-alpine3.18
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      PGDATA: '/var/lib/postgresql/data/pgdata'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      # \\wsl$\docker-desktop-data\data\docker\volumes
+    ports:
+      - '5432:5432'
+
+volumes:
+  db-data:
