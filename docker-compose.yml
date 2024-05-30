@@ -3,16 +3,23 @@ services:
   app:
     image: app
     container_name: app
-    build:
-      context: .
-      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: 'postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}'
+      GOOGLE_ID: ${GOOGLE_ID}
+      GOOGLE_SECRET: ${GOOGLE_SECRET}
+      AUTH_URL: ${AUTH_URL}
+      AUTH_SECRET: ${AUTH_SECRET}
+      EMAIL_SERVER_USER: ${EMAIL_SERVER_USER}
+      EMAIL_SERVER_PASSWORD: ${EMAIL_SERVER_PASSWORD}
+      EMAIL_SERVER_HOST: ${EMAIL_SERVER_HOST}
+      EMAIL_SERVER_PORT: ${EMAIL_SERVER_PORT}
+      EMAIL_FROM: ${EMAIL_FROM}
+      NEXT_TELEMETRY_DISABLED: 1
+    build: .
     ports:
-      - '3001:3001'
+      - '3000:3000'
     depends_on:
       - db
-    networks:
-      - proxy
-      - internal
   db:
     image: postgres:14.8-alpine3.18
     container_name: db
@@ -27,15 +34,6 @@ services:
       # \\wsl$\docker-desktop-data\data\docker\volumes
     ports:
       - '5432:5432'
-    networks:
-      - proxy
-      - internal
 
 volumes:
   db-data:
-
-networks:
-  proxy:
-    external: true
-  internal:
-    external: false
