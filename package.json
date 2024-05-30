@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "start:prod": "npx prisma migrate deploy && next start",
+    "docker:up": "docker-compose -f docker-compose.yml -p app-prod up",
+    "docker:down": "docker-compose -f docker-compose.yml -p app-prod down"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.1.0",
