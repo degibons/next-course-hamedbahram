@@ -1,3 +1,3 @@
 export default function Home() {
-  return <h1 className="text-3xl font-bold">NextJs Starter Kit</h1>;
+  return <h1 className="text-3xl font-bold">NextJs Starter Kit 7</h1>
 }

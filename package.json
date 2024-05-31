@@ -9,9 +9,10 @@
     "lint": "next lint",
     "postinstall": "prisma generate",
     "start:prod": "npx prisma migrate deploy && next start",
-    "docker:build": "docker-compose -f docker-compose.yml build",
-    "docker:up": "docker-compose -f docker-compose.yml -p app-prod up",
-    "docker:down": "docker-compose -f docker-compose.yml -p app-prod down"
+    "docker:build-app": "docker compose -f docker-compose.yml build app",
+    "docker:up": "docker compose -f docker-compose.yml -p app-prod up",
+    "docker:down": "docker compose -f docker-compose.yml -p app-prod down",
+    "docker:restart": "docker compose -f docker-compose.yml -p app-prod restart"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.1.0",
