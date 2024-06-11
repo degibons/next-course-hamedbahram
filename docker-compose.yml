@@ -1,16 +1,27 @@
 version: '3.9'
 services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy:1.5-alpine
+    container_name: nginx-proxy
+    ports:
+      - '80:80'
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
   app:
     image: app:release
     container_name: app
     environment:
       DATABASE_URL: 'postgresql://${DATABASE_USER}:${DATABASE_PASSWORD}@db:5432/${DATABASE_NAME}'
       NEXT_TELEMETRY_DISABLED: 1
+      VIRTUAL_HOST: app.local
+      VIRTUAL_PORT: 3000
+    expose:
+      - '3000'
     env_file:
       - .env
     build: .
-    ports:
-      - '3000:3000'
+    # ports:
+    #   - '3000:3000'
     depends_on:
       - db
   db:
@@ -25,8 +36,10 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       # \\wsl$\docker-desktop-data\data\docker\volumes
-    ports:
-      - '5432:5432'
+    expose:
+      - '5432'
+    # ports:
+    #   - '5432:5432'
 
 volumes:
   db-data:
