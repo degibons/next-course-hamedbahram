@@ -33,6 +33,7 @@ const SignInButton = () => {
                   alt={session.user.name}
                   className="inline-block rounded-full"
                   fill
+                  sizes="24px"
                 />
               </div>
             ) : (

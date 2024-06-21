@@ -1,6 +1,6 @@
 import PageViews from '@/app/components/PageViews'
 import BlogImage from '@/app/components/ui/BlogImage'
-import { getAllPosts, getPostBySlug, wait } from '@/lib/posts'
+import { getAllPosts, getPostBySlug } from '@/lib/posts'
 import { Suspense } from 'react'
 
 export async function generateMetadata({ params, searchParams }, parent) {
@@ -59,7 +59,7 @@ const Page = async ({ params }) => {
           </Suspense>
         </div>
       </header>
-      <main className="prose mt-12">{content}</main>
+      <main className="dtext prose mt-12">{content}</main>
     </section>
   )
 }
